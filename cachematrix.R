@@ -7,10 +7,14 @@
 ## if the inverse is not computed yet, then it will have a flag (m=NULL), indicating that it is a virgin matrix
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
+  set <- function(y) {
+    x <<- y
+    m <<- NULL
+  }
   get <- function() x
   setinv <- function(inv) m <<- inv
   getinv <- function() m
-  list(get = get,
+  list(set=set,get = get,
        setinv = setinv,
        getinv = getinv)
 }
